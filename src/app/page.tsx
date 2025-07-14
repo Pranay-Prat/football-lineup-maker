@@ -1,7 +1,11 @@
-export default function Home() {
-  return (
-    <div>
-     
-    </div>
-  );
+'use client';
+
+
+export default function HomePage() {
+
+
+  return (<div>
+
+  </div>
+  )
 }
