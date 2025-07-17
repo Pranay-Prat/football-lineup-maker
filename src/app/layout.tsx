@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/context/ThemeProvider";
 import { Outfit } from 'next/font/google';
 const outfit = Outfit({
@@ -19,11 +20,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en" suppressHydrationWarning className={outfit.className} >
       <body>
         <ThemeProvider>{children}</ThemeProvider>
         
       </body>
     </html>
+    </ClerkProvider>
   );
 }
