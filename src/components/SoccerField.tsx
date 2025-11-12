@@ -1,10 +1,8 @@
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { PlayerPositions } from "@/lib/formations";
 import { PlayerColor, PitchColor } from "@/lib/colors";
-import { useLineupStore } from "@/store/lineupStore";
 import { DraggablePlayer } from "./SoccerFieldDraggablePlayer";
-import { useDrop, DropTargetMonitor } from "react-dnd";
 
 type SoccerFieldProps = {
   players: PlayerPositions[];
@@ -12,25 +10,8 @@ type SoccerFieldProps = {
   pitchColor: PitchColor;
 };
 const SoccerField: React.FC<SoccerFieldProps> = ({ players, playerColor, pitchColor }) => {
-  const updatePlayerPosition = useLineupStore((state) => state.updatePlayerPosition);
+  // updatePlayerPosition will be used by native drag logic in DraggablePlayer
   const fieldRef = useRef<HTMLDivElement>(null);
-  const [, drop] = useDrop({
-    accept: 'PLAYER',
-    drop: (item: { id: number }, monitor: DropTargetMonitor) => {
-      const clientOffset = monitor.getClientOffset();
-      const rect = fieldRef.current?.getBoundingClientRect();
-      if (!rect || !clientOffset) return;
-      const left = ((clientOffset.x - rect.left) / rect.width) * 100;
-      const top = ((clientOffset.y - rect.top) / rect.height) * 100;
-      updatePlayerPosition(item.id, top, left);
-    },
-  });
-
-  useEffect(() => {
-    if (fieldRef.current) {
-      drop(fieldRef.current);
-    }
-  }, [drop]);
 
   return (
     <div className="relative mx-auto" style={{ maxWidth: '600px', aspectRatio: '2/3' }} ref={fieldRef}>
@@ -85,6 +66,7 @@ const SoccerField: React.FC<SoccerFieldProps> = ({ players, playerColor, pitchCo
               playerColor={playerColor}
               number={player.id}
               name={player.name}
+              fieldRef={fieldRef}
             />
           ))}
         </div>

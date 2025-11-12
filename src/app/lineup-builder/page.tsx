@@ -1,22 +1,15 @@
 
 "use client";
-import { useUser } from '@clerk/nextjs'
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { formations } from '@/lib/formations';
 import { playerColors, pitchColors } from '@/lib/colors';
 import { useLineupStore } from '@/store/lineupStore';
 import SoccerField from '@/components/SoccerField';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
 import { ChevronDown, Palette, Save, Share2, Download } from 'lucide-react';
 
-import { useRouter } from 'next/navigation';
 
 const LineupBuilderPage = () => {
-  const { isSignedIn } = useUser();
-  const router = useRouter();
-  const [saving, setSaving] = useState(false);
   const [isFormationOpen, setIsFormationOpen] = useState(false)
   const [isColorPickerOpen, setIsColorPickerOpen] = useState(false)
   const [isPitchColorPickerOpen, setIsPitchColorPickerOpen] = useState(false)
@@ -53,39 +46,6 @@ const LineupBuilderPage = () => {
     setIsPitchColorPickerOpen(false)
   }
 
-  const handleSaveLineup = async () => {
-    if (!isSignedIn) {
-      router.push('/sign-in');
-      return;
-    }
-    setSaving(true);
-    try {
-      const res = await fetch('/api/lineups/save', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title: teamName,
-          formationName: selectedFormation.name,
-          players,
-          background: pitchColor.value,
-          isPublic: false,
-          name: teamName,
-        }),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        alert('Lineup saved!');
-      } else if (data?.error === 'Unauthorized') {
-        router.push('/sign-in');
-      } else {
-        alert('Failed to save lineup: ' + (data?.error || 'Unknown error'));
-      }
-    } catch (err) {
-      alert('Failed to save lineup.');
-    } finally {
-      setSaving(false);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-background font-sans">
@@ -95,31 +55,25 @@ const LineupBuilderPage = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
-          className="text-center mb-8"
+          className="text-center mb-4"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-2">
             Lineup Builder
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-4">
             Create and customize your perfect football formation with our interactive builder
           </p>
         </motion.div>
 
+
+
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Field Display - Shows first on mobile, second on desktop */}
-          <div className="lg:col-span-3 order-1 lg:order-2">
-            <div className="bg-card border border-border rounded-lg p-6">
+          <div className="lg:col-span-3 order-1 lg:order-2 flex justify-center">
+            <div className="w-full max-w-[600px] mx-auto bg-card border border-border rounded-lg p-6">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-2xl font-semibold text-foreground">{teamName}</h3>
                 <div className="flex items-center space-x-4">
-                  <button
-                    onClick={handleSaveLineup}
-                    className="flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary/80 transition disabled:opacity-60"
-                    disabled={saving}
-                  >
-                    <Save className="w-4 h-4 mr-2" />
-                    {saving ? 'Saving...' : 'Save Lineup'}
-                  </button>
                   <div className="text-sm text-foreground hidden lg:flex items-center px-3 py-1.5 bg-white/20 dark:bg-white/10 rounded-full border border-black/30 dark:border-white/20">
                     Formation: {selectedFormation.name}
                   </div>
@@ -157,9 +111,7 @@ const LineupBuilderPage = () => {
                 </div>
               </div>
               {/* Soccer Field */}
-              <DndProvider backend={HTML5Backend}>
-                <SoccerField players={players} playerColor={playerColor} pitchColor={pitchColor} />
-              </DndProvider>
+              <SoccerField players={players} playerColor={playerColor} pitchColor={pitchColor} />
             </div>
           </div>
 
