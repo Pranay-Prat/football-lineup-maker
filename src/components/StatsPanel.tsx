@@ -6,15 +6,8 @@ import { Palette, Shield, Compass, Target } from "lucide-react";
 import { PlayerPositions } from "@/lib/formations";
 import { playerColors, pitchColors } from "@/lib/colors";
 import { useLineupStore } from "@/store/lineupStore";
+import { getRoleCategory } from "@/lib/player-utils";
 
-// Helper to categorize roles
-const getRoleCategory = (role: string): 'GK' | 'DEF' | 'MID' | 'FWD' => {
-    const upperRole = role.toUpperCase();
-    if (upperRole === 'GK') return 'GK';
-    if (['CB', 'LCB', 'RCB', 'LB', 'RB', 'LWB', 'RWB'].includes(upperRole)) return 'DEF';
-    if (['ST', 'CF', 'LW', 'RW', 'SS'].includes(upperRole)) return 'FWD';
-    return 'MID';
-};
 
 type StatsPanelProps = {
     players: PlayerPositions[];
@@ -36,7 +29,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ players }) => {
     };
 
     return (
-        <div className="bg-card border border-border rounded-lg p-4 space-y-4">
+        <div className="bg-card border-2 dark:border rounded-lg p-4 space-y-4">
             {/* Formation Stats */}
             <div>
                 <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">

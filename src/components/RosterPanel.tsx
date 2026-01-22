@@ -5,22 +5,8 @@ import { motion } from "framer-motion";
 import { Users } from "lucide-react";
 import { PlayerPositions } from "@/lib/formations";
 import { useLineupStore } from "@/store/lineupStore";
+import { getRoleCategory, categoryColors } from "@/lib/player-utils";
 
-// Helper to categorize roles
-const getRoleCategory = (role: string): 'GK' | 'DEF' | 'MID' | 'FWD' => {
-    const upperRole = role.toUpperCase();
-    if (upperRole === 'GK') return 'GK';
-    if (['CB', 'LCB', 'RCB', 'LB', 'RB', 'LWB', 'RWB'].includes(upperRole)) return 'DEF';
-    if (['ST', 'CF', 'LW', 'RW', 'SS'].includes(upperRole)) return 'FWD';
-    return 'MID';
-};
-
-const categoryColors = {
-    GK: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-600',
-    DEF: 'bg-blue-500/10 border-blue-500/30 text-blue-500',
-    MID: 'bg-green-500/10 border-green-500/30 text-green-500',
-    FWD: 'bg-red-500/10 border-red-500/30 text-red-500',
-};
 
 type RosterPanelProps = {
     players: PlayerPositions[];
@@ -37,7 +23,7 @@ export const RosterPanel: React.FC<RosterPanelProps> = ({ players, playerColor }
             transition={{ duration: 0.3, delay: 0.3 }}
             className="lg:col-span-3 order-3 lg:order-3"
         >
-            <div className="bg-card border border-border rounded-lg p-4">
+            <div className="bg-card border-2 dark:border rounded-lg p-4">
                 <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
                     <Users className="w-5 h-5" />
                     Squad Roster

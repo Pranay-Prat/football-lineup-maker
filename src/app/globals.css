@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f8f7f4;
   --foreground: #0a0a0a;
   --card: #ffffff;
   --card-foreground: #0a0a0a;
@@ -25,7 +25,7 @@
   --chart-3: #737373;
   --chart-4: #737373;
   --chart-5: #737373;
-  --sidebar: #fafafa;
+  --sidebar: #f5f4f1;
   --sidebar-foreground: #0a0a0a;
   --sidebar-primary: #171717;
   --sidebar-primary-foreground: #fafafa;
