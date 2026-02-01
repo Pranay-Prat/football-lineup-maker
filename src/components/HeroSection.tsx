@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Sparkles, Users, Layers } from "lucide-react";
 import { PinContainer } from "@/components/ui/3d-pin";
 import { motion } from "framer-motion";
+import Button3D from "@/components/ui/Button3D";
 
 export default function HeroSection() {
     return (
@@ -66,64 +67,20 @@ export default function HeroSection() {
                     drag-and-drop lineup builder. Choose your formation and build the perfect squad.
                 </p>
 
-                {/* CTA Button - 3D Pixel Key Style with Motion */}
+                {/* CTA Button - 3D Pill Style with Motion */}
                 <div className="flex justify-center mb-16">
                     <Link href="/lineup-builder" className="group">
                         <motion.div
-                            className="relative cursor-pointer"
+                            className="relative"
                             whileHover="hover"
                             whileTap="pressed"
                             initial="idle"
                         >
-                            {/* 3D Base layer - visible bottom and right edges */}
-                            {/* Light mode: black base, Dark mode: white base (inverted for contrast) */}
-                            <div
-                                className="absolute inset-[1px]"
-                                style={{
-                                    clipPath: 'polygon(8px 0%, calc(100% - 8px) 0%, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0% calc(100% - 8px), 0% 8px)'
-                                }}
-                            >
-                                {/* Full background for depth - light for light mode, dark for dark mode */}
-                                <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-900" />
-                                {/* Right edge - slightly darker for 3D effect */}
-                                <div className="absolute top-0 right-0 bottom-0 w-[8px] bg-gradient-to-l from-neutral-300 to-neutral-200 dark:from-neutral-800 dark:to-neutral-900" />
-                                {/* Bottom edge - slightly darker for 3D effect */}
-                                <div className="absolute left-0 right-0 bottom-0 h-[10px] bg-gradient-to-t from-neutral-300 to-neutral-200 dark:from-neutral-800 dark:to-neutral-900" />
-                            </div>
-
-                            {/* Main key surface */}
-                            {/* Light mode: white surface, Dark mode: dark surface */}
-                            <motion.div
-                                className="relative"
-                                style={{
-                                    clipPath: 'polygon(8px 0%, calc(100% - 8px) 0%, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0% calc(100% - 8px), 0% 8px)'
-                                }}
-                                variants={{
-                                    idle: { y: 0, x: 0 },
-                                    hover: { y: 4, x: 3 },
-                                    pressed: { y: 8, x: 6 }
-                                }}
-                                transition={{
-                                    type: "spring",
-                                    stiffness: 600,
-                                    damping: 25
-                                }}
-                            >
-                                {/* Key top surface */}
-                                <div className="relative w-[280px] h-[70px] flex items-center justify-center bg-white dark:bg-neutral-950 border-2 border-neutral-900 dark:border-neutral-800">
-                                    {/* Button text */}
-                                    <span className="text-xl font-black text-neutral-900 dark:text-neutral-100 uppercase tracking-widest select-none">
-                                        Build
-                                    </span>
-
-                                    {/* Bottom inner shadow */}
-                                    <div className="absolute left-4 bottom-2 right-4 h-[2px] bg-neutral-200 dark:bg-neutral-800 rounded-full opacity-50" />
-                                </div>
-                            </motion.div>
+                            <Button3D>Build</Button3D>
 
                             {/* Press hint */}
                             <motion.div
-                                className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-1.5 text-xs font-medium text-muted-foreground"
+                                className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-1.5 text-xs font-medium text-muted-foreground whitespace-nowrap"
                                 variants={{
                                     idle: { opacity: 0.5, y: 0 },
                                     hover: { opacity: 1, y: 0 },
