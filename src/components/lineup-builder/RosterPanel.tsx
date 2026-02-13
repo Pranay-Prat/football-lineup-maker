@@ -20,7 +20,7 @@ export const RosterPanel: React.FC<RosterPanelProps> = ({ players, playerColor }
         <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3, delay: 0.3 }}
+            transition={{ duration: 0.3}}
             className="lg:col-span-3 order-3 lg:order-3"
         >
             <div className="bg-card/50 backdrop-blur-sm border border-border/50 shadow-sm rounded-xl p-6 transition-all duration-300 hover:shadow-md hover:border-border">

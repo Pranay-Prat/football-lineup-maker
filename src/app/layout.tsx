@@ -4,6 +4,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeProvider";
+import AuthProvider from "@/context/AuthProvider";
 import { Outfit } from 'next/font/google';
 import Navbar from "@/components/ui/navbar";
 
@@ -155,8 +156,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${outfit.variable} font-sans bg-background text-foreground`}>
         <ThemeProvider>
-          <Navbar />
-          <main>{children}</main>
+          <AuthProvider>
+            <Navbar />
+            <main>{children}</main>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

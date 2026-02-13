@@ -121,7 +121,7 @@ export const DraggablePlayer: React.FC<DraggablePlayerProps> = ({ id, top, left,
         playerColor={playerColor}
       />
       <span
-        className="mt-1 w-full rounded text-[10px] text-center text-white font-semibold block leading-tight"
+        className="mt-1 w-full rounded text-xs text-center text-white font-semibold block leading-tight"
         style={{
           marginTop: 4,
           padding: "2px 4px",
