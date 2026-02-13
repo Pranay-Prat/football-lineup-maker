@@ -29,7 +29,7 @@ const Navbar = () => {
   }
 
   const navItems = [
-    { name: "About", href: "#about", type: "a" },
+    { name: "About", href: "/#about", type: "link" },
     { name: "Lineups", href: "/lineups/all", type: "link" }
   ]
 
