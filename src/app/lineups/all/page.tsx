@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { ArrowLeft, Trash2, Users, Calendar, Plus, Loader2, LogIn } from "lucide-react";
 import { useAuth } from "@/context/AuthProvider";
 import axios from "axios";
@@ -22,7 +21,6 @@ type Lineup = {
 
 export default function AllLineupsPage() {
   const { user, isLoading: authLoading } = useAuth();
-  const router = useRouter();
   const [lineups, setLineups] = useState<Lineup[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [deletingId, setDeletingId] = useState<string | null>(null);

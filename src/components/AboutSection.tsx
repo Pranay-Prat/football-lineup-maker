@@ -51,13 +51,13 @@ export default function AboutSection() {
                     </h2>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                         LineupLab is your go-to tool for building, visualizing, and sharing football lineups.
-                        Whether you're a coach, analyst, or passionate fan, we make tactics accessible to everyone.
+                        Whether you&apos;re a coach, analyst, or passionate fan, we make tactics accessible to everyone.
                     </p>
                 </div>
 
                 {/* Features grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                    {features.map((feature, index) => (
+                    {features.map((feature) => (
                         <div
                             key={feature.title}
                             className="group relative p-6 lg:p-8 bg-card rounded-2xl border border-border/50 hover:border-border transition-all duration-300 hover:shadow-lg"

@@ -16,7 +16,6 @@ type DraggablePlayerProps = {
 };
 
 export const DraggablePlayer: React.FC<DraggablePlayerProps> = ({ id, top, left, playerColor, number, name = "", fieldRef }) => {
-  const updatePlayerName = useLineupStore((state) => state.updatePlayerName);
   const updatePlayerPosition = useLineupStore((state) => state.updatePlayerPosition);
   const draggingRef = React.useRef(false);
   const offsetRef = React.useRef<{ x: number, y: number }>({ x: 0, y: 0 });

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Save, Share2, Download, Image, FileCode, ChevronDown } from 'lucide-react';
+import { Save, Share2, Download, Image as ImageIcon, FileCode, ChevronDown } from 'lucide-react';
 
 export interface ActionsPanelProps {
     isExporting: boolean;
@@ -74,7 +74,7 @@ export const ActionsPanel: React.FC<ActionsPanelProps> = ({
                             className="w-full flex items-center space-x-3 px-4 py-3 hover:bg-accent/50 transition-colors text-left group"
                         >
                             <div className="p-2 bg-blue-500/10 rounded-md group-hover:bg-blue-500/20 transition-colors">
-                                <Image className="w-4 h-4 text-blue-500" />
+                                <ImageIcon className="w-4 h-4 text-blue-500" />
                             </div>
                             <div>
                                 <div className="font-medium text-sm text-foreground">Export as PNG</div>

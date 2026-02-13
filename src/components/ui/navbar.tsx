@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, LogOut, User } from "lucide-react"
+import { Menu, X, LogOut } from "lucide-react"
 import { ThemeToggle } from "../ThemeToggle"
 import { useAuth } from "@/context/AuthProvider"
 
