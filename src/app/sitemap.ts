@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: currentDate,
             changeFrequency: 'weekly',
             priority: 1.0,
-            images: ['/Ball_Loader.png'],
+            images: ['/favicon.ico'],
         },
         {
             url: `${baseUrl}/lineup-builder`,
