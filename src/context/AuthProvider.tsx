@@ -80,14 +80,20 @@ export default function AuthProvider({
       setSession(newSession);
       setUser(newSession?.user ?? null);
       setIsLoading(false);
-
-      // Sync user to Prisma DB on sign in
       if (_event === "SIGNED_IN" && newSession?.user) {
-        try {
-          await axios.post("/api/auth/sync-user");
-        } catch (error) {
-          console.error("Error syncing user:", error);
+        const alreadySynced = sessionStorage.getItem("user-synced");
+        if (!alreadySynced) {
+          try {
+            await axios.post("/api/auth/sync-user");
+            sessionStorage.setItem("user-synced", "1");
+          } catch (error) {
+            console.error("Error syncing user:", error);
+          }
         }
+      }
+
+      if (_event === "SIGNED_OUT") {
+        sessionStorage.removeItem("user-synced");
       }
     });
 
