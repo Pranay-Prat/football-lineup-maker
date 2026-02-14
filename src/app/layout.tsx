@@ -61,32 +61,23 @@ export const metadata: Metadata = {
   },
 
   // Open Graph (Facebook, LinkedIn, etc.)
-openGraph: {
+  openGraph: {
   type: "website",
   locale: "en_US",
   url: siteConfig.url,
   title: siteConfig.name,
   description: siteConfig.description,
   siteName: siteConfig.name,
-  images: [
-    {
-      url: "/opengraph-image",
-      width: 1200,
-      height: 630,
-      alt: "Lineup Lab - Create Beautiful Football Lineups",
-    },
-  ],
 },
 
 
   // Twitter Card
-twitter: {
-  card: "summary_large_image",
-  title: siteConfig.name,
-  description: siteConfig.description,
-  creator: "@lineuplab",
-  images: ["/opengraph-image"],
-},
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    creator: "@lineuplab", // Update with your Twitter handle
+  },
 
 
   // Robots
