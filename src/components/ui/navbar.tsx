@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, LogOut } from "lucide-react"
+import { Menu, X, LogOut, Github } from "lucide-react"
 import { ThemeToggle } from "../ThemeToggle"
 import { useAuth } from "@/context/AuthProvider"
 
@@ -83,6 +83,37 @@ const Navbar = () => {
 
             {/* Right - Theme Toggle + Auth */}
             <div className="hidden md:flex items-center space-x-3">
+              <Link href="https://github.com/Pranay-Prat/Lineup-Lab" target="_blank" className="relative group hidden md:block">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  animate={{ 
+                    rotate: [0, -10, 10, -10, 10, 0],
+                    scale: [1, 1.1, 1.1, 1.1, 1.1, 1]
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatDelay: 5
+                  }}
+                  className="p-2 text-muted-foreground hover:text-foreground transition-colors duration-200 rounded-lg"
+                >
+                  <Github className="w-5 h-5" />
+                </motion.div>
+                
+                {/* Notification Badge */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ delay: 1, duration: 0.5, type: "spring" }}
+                  className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-1 rounded-md whitespace-nowrap shadow-lg pointer-events-none"
+                >
+                  Don't forget to star!
+                  <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-primary rotate-45" />
+                </motion.div>
+              </Link>
+                <div className="h-6 w-px bg-border mx-2 hidden md:block"></div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -181,6 +212,26 @@ const Navbar = () => {
                 ))}
 
                 <div className="pt-4 space-y-3 border-t border-border">
+                  <div className="flex items-center justify-between">
+                    <span className="text-muted-foreground font-medium">Star on GitHub</span>
+                    <Link href="https://github.com/Pranay-Prat/Lineup-Lab" target="_blank">
+                      <motion.div
+                        whileTap={{ scale: 0.95 }}
+                        animate={{ 
+                          scale: [1, 1.1, 1]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatDelay: 3
+                        }}
+                        className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-lg border border-border bg-card"
+                      >
+                        <Github className="w-5 h-5" />
+                      </motion.div>
+                    </Link>
+                  </div>
+
                   <div className="flex items-center justify-between">
                     <span className="text-muted-foreground font-medium">Theme</span>
                     <motion.div
