@@ -183,12 +183,15 @@ const LineupBuilderPage = () => {
           {/* Pitch Panel - Center */}
           <PitchPanel ref={pitchRef} teamName={teamName} players={players} playerColor={playerColor} />
 
-          {/* Controls Panel - Shows second on mobile, first on desktop */}
+          {/* Player Roster Panel - Right on desktop, directly below pitch on mobile */}
+          <RosterPanel players={players} playerColor={playerColor} />
+
+          {/* Team Details & Stats - Left column on desktop, below roster on mobile */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: 0.2 }}
-            className="lg:col-span-3 space-y-4 order-2 lg:order-1"
+            className="lg:col-span-3 lg:col-start-1 lg:row-start-1 space-y-4 order-3 lg:order-1"
           >
             {/* Team Details */}
             <TeamDetailsCard
@@ -198,8 +201,15 @@ const LineupBuilderPage = () => {
 
             {/* Stats & Colors Panel */}
             <StatsPanel players={players} />
+          </motion.div>
 
-            {/* Action Buttons */}
+          {/* Action Buttons - Bottom on mobile, left column on desktop */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
+            className="lg:col-span-3 lg:col-start-1 lg:row-start-2 order-4 lg:order-1"
+          >
             <ActionsPanel
               isExporting={isExporting}
               isExportOpen={isExportOpen}
@@ -210,9 +220,6 @@ const LineupBuilderPage = () => {
               onShare={handleShare}
             />
           </motion.div>
-
-          {/* Player Roster Panel - Right Side */}
-          <RosterPanel players={players} playerColor={playerColor} />
         </div>
       </div>
     </div>

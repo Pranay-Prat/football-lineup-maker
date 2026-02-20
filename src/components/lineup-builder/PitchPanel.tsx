@@ -27,7 +27,7 @@ export const PitchPanel = forwardRef<HTMLDivElement, PitchPanelProps>(
         };
 
         return (
-            <div className="lg:col-span-6 order-1 lg:order-2 flex justify-center">
+            <div className="lg:col-span-6 lg:row-span-2 order-1 lg:order-2 flex justify-center">
                 <div className="w-full max-w-[600px] mx-auto bg-card/50 backdrop-blur-sm border border-border/50 shadow-sm rounded-xl p-6 transition-all duration-300 hover:shadow-md hover:border-border">
                     <div className="flex items-center justify-between mb-6">
                         <h3 className="text-2xl font-bold text-foreground tracking-tight">{teamName}</h3>

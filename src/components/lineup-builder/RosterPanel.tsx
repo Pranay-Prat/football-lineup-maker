@@ -110,7 +110,7 @@ export const RosterPanel: React.FC<RosterPanelProps> = ({ players, playerColor }
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3}}
-            className="lg:col-span-3 order-3 lg:order-3"
+            className="lg:col-span-3 lg:row-span-2 order-2 lg:order-3"
         >
             <div className="bg-card/50 backdrop-blur-sm border border-border/50 shadow-sm rounded-xl p-6 transition-all duration-300 hover:shadow-md hover:border-border">
                 <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2 tracking-tight">

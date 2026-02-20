@@ -1,5 +1,5 @@
 export type { PlayerPositions, Formation } from "@/lib/types";
-import type { PlayerPositions, Formation } from "@/lib/types";
+import type { Formation } from "@/lib/types";
 
 
 export const formations: Formation[]=[

@@ -3,7 +3,7 @@
  * Uses pako deflate compression + compact keys for shorter URLs
  */
 
-import type { PlayerPositions, ShareableLineupData } from "@/lib/types";
+import type { ShareableLineupData } from "@/lib/types";
 import { deflate, inflate } from "pako";
 
 export type { ShareableLineupData } from "@/lib/types";
